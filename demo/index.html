@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Orthodox Calendar Card – demo</title>
+    <style>
+      body {
+        font-family: Roboto, system-ui, sans-serif;
+        background: #f0f0f0;
+        --primary-color: #03a9f4;
+        --primary-text-color: #212121;
+        --secondary-text-color: #727272;
+        --divider-color: rgba(0, 0, 0, 0.12);
+        display: flex;
+        gap: 24px;
+        padding: 24px;
+      }
+      ha-card {
+        display: block;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      }
+      orthodox-calendar-card {
+        width: 380px;
+      }
+    </style>
+    <script type="module">
+      // Mock of the two Calendar Ortodox entities (sample data, not real API output).
+      const pad = (n) => String(n).padStart(2, "0");
+      const key = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+      const saints = [
+        "Sf. Mare Mc. Mina; Sf. Mc. Victor și Vichentie",
+        "Sf. Ioan cel Milostiv, Patriarhul Alexandriei",
+        "† Sf. Ioan Gură de Aur, Arhiepiscopul Constantinopolului",
+        "Sf. și slăvitul Ap. Filip; Lăsatul secului pentru Postul Nașterii Domnului",
+        "Duminica a 25-a după Rusalii (Pilda samarineanului milostiv)",
+        "Sf. Ier. Grigorie Taumaturgul",
+        "Sf. Ap. și Evanghelist Matei",
+        "Sf. Mc. Platon",
+        "Sf. Proroc Avdie",
+        "Înainteprăznuirea Intrării în Biserică a Maicii Domnului",
+      ];
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const regular = [];
+      const feasts = [];
+      for (let i = 0; i < 60; i++) {
+        const d = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
+        const e = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
+        regular.push({
+          start: { date: key(d) },
+          end: { date: key(e) },
+          summary: saints[i % saints.length],
+          description: "Post: Dezlegare la pește",
+        });
+        if (i === 3) {
+          feasts.push({
+            start: { date: key(d) },
+            end: { date: key(e) },
+            summary: "(†) Praznic mare (exemplu)",
+            description: "Praznic Mare\nNu se fac nunți",
+          });
+        }
+      }
+      const hass = {
+        states: {
+          "calendar.calendar_ortodox": { entity_id: "calendar.calendar_ortodox", state: "on", attributes: {} },
+          "calendar.calendar_ortodox_sarbatori": { entity_id: "calendar.calendar_ortodox_sarbatori", state: "off", attributes: {} },
+        },
+        locale: { language: "ro" },
+        callApi: async (_m, path) => (path.includes("sarbatori") ? feasts : regular),
+      };
+
+      await import("../dist/orthodox-calendar-card.js");
+      const make = (config) => {
+        const el = document.createElement("orthodox-calendar-card");
+        el.setConfig({ type: "custom:orthodox-calendar-card", ...config });
+        el.hass = hass;
+        document.body.appendChild(el);
+      };
+      make({ title: "Calendar Ortodox" });
+      make({ title: "Custom color, not bold", feast_bold: false, feast_color: "#8e24aa", show_description: true, days_to_show: 5 });
+    </script>
+  </head>
+  <body></body>
+</html>
