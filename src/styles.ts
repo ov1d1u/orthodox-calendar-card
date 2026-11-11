@@ -68,6 +68,12 @@ export const cardStyles = css`
     color: var(--secondary-text-color);
     white-space: pre-line;
   }
+  .fasting {
+    flex: 0 0 auto;
+    align-self: center;
+    --mdc-icon-size: 20px;
+    color: var(--secondary-text-color);
+  }
   .highlighted .date,
   .highlighted .date .wday,
   .highlighted .date .month,

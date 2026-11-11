@@ -18,6 +18,7 @@ const SCHEMA = [
       { name: "feast_bold", selector: { boolean: {} } },
       { name: "show_description", selector: { boolean: {} } },
       { name: "highlight_today", selector: { boolean: {} } },
+      { name: "show_fasting_icons", selector: { boolean: {} } },
     ],
   },
 ];

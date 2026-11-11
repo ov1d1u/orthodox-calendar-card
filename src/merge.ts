@@ -1,4 +1,5 @@
 import { addDays, dateKey, eventDateKey, parseDateKey } from "./date-utils";
+import { parseFasting } from "./fasting";
 import type { CalendarDay, HaCalendarEvent } from "./types";
 
 export type EventFetcher = (entity: string, start: Date, end: Date) => Promise<HaCalendarEvent[]>;
@@ -25,11 +26,13 @@ export function mergeEvents(
     if (!isFeast && byDate.has(key)) return;
     const date = parseDateKey(key);
     const isSunday = date.getDay() === 0;
+    const description = ev.description?.trim() || undefined;
     byDate.set(key, {
       key,
       date,
       summary: ev.summary,
-      description: ev.description?.trim() || undefined,
+      description,
+      fasting: parseFasting(description),
       isFeast,
       isSunday,
       highlighted: isFeast || isSunday,

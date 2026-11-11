@@ -13,6 +13,7 @@ const STRINGS = {
     feast_color: "Feast & Sunday color",
     feast_bold: "Bold feasts & Sundays",
     highlight_today: "Highlight today",
+    show_fasting_icons: "Show fasting icons",
   },
   ro: {
     loading: "Se încarcă…",
@@ -28,6 +29,7 @@ const STRINGS = {
     feast_color: "Culoare sărbători și duminici",
     feast_bold: "Sărbători și duminici îngroșate",
     highlight_today: "Evidențiază ziua curentă",
+    show_fasting_icons: "Afișează iconițe pentru post",
   },
 };
 
