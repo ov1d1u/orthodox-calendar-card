@@ -14,6 +14,8 @@ const STRINGS = {
     feast_bold: "Bold feasts & Sundays",
     highlight_today: "Highlight today",
     show_fasting_icons: "Show fasting icons",
+    fish_icon: "Fish day icon",
+    fasting_icon: "Fasting day icon",
   },
   ro: {
     loading: "Se încarcă…",
@@ -30,6 +32,8 @@ const STRINGS = {
     feast_bold: "Sărbători și duminici îngroșate",
     highlight_today: "Evidențiază ziua curentă",
     show_fasting_icons: "Afișează iconițe pentru post",
+    fish_icon: "Iconiță zile cu dezlegare la pește",
+    fasting_icon: "Iconiță zile de post",
   },
 };
 

@@ -11,6 +11,8 @@ export interface OrthodoxCalendarCardConfig {
   feast_bold?: boolean;
   highlight_today?: boolean;
   show_fasting_icons?: boolean;
+  fish_icon?: string;
+  fasting_icon?: string;
 }
 
 export type ResolvedConfig = Required<Omit<OrthodoxCalendarCardConfig, "title">> & {
@@ -26,6 +28,8 @@ export const DEFAULT_CONFIG: Omit<ResolvedConfig, "type"> = {
   feast_bold: true,
   highlight_today: true,
   show_fasting_icons: true,
+  fish_icon: "mdi:fish",
+  fasting_icon: "mdi:food-steak-off",
 };
 
 /** Event as returned by GET /api/calendars/<entity_id>. */

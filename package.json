@@ -1,6 +1,6 @@
 {
   "name": "orthodox-calendar-card",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Home Assistant Lovelace card for the Calendar Ortodox integration",
   "type": "module",
   "main": "dist/orthodox-calendar-card.js",

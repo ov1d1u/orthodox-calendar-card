@@ -15,7 +15,7 @@ import {
 } from "./types";
 import "./editor";
 
-const CARD_VERSION = "1.1.0";
+const CARD_VERSION = "1.2.0";
 const REFRESH_MS = 60 * 60 * 1000;
 
 console.info(
@@ -204,7 +204,9 @@ export class OrthodoxCalendarCard extends LitElement {
             ? html`<ha-icon
                 class="fasting"
                 title=${day.fasting.text ?? ""}
-                .icon=${day.fasting.kind === "fish" ? "mdi:fish" : "mdi:food-drumstick-off"}
+                .icon=${day.fasting.kind === "fish"
+                  ? c.fish_icon || DEFAULT_CONFIG.fish_icon
+                  : c.fasting_icon || DEFAULT_CONFIG.fasting_icon}
               ></ha-icon>`
             : nothing}
         </div>

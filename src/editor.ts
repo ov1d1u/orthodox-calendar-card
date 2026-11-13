@@ -21,6 +21,14 @@ const SCHEMA = [
       { name: "show_fasting_icons", selector: { boolean: {} } },
     ],
   },
+  {
+    type: "grid",
+    name: "",
+    schema: [
+      { name: "fish_icon", selector: { icon: {} } },
+      { name: "fasting_icon", selector: { icon: {} } },
+    ],
+  },
 ];
 
 export class OrthodoxCalendarCardEditor extends LitElement {

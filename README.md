@@ -12,7 +12,7 @@ Styled after the event list of
 - Combines the daily calendar and the feasts calendar into one list, one row per day.
 - When the feasts calendar has an event on a day, it replaces that day's regular entry.
 - Feast days and Sundays are shown in a configurable color, optionally in bold.
-- Fasting days are marked with an icon (fish icon on fish days).
+- Fasting days are marked with a configurable icon (fish icon on fish days).
 - Click a day to show its description (fasting rules, readings, …).
 - Visual editor, Romanian and English labels.
 
@@ -50,7 +50,9 @@ days_to_show: 7
 | `feast_color` | `var(--red-color, #f44336)` | Color of feast days and Sundays. Any CSS color. |
 | `feast_bold` | `true` | Render feast days and Sundays in bold. |
 | `highlight_today` | `true` | Mark today's row. |
-| `show_fasting_icons` | `true` | Show a fasting icon: <code>mdi:fish</code> on fish days (“Dezlegare la pește”), <code>mdi:food-drumstick-off</code> on other fasting days. |
+| `show_fasting_icons` | `true` | Show a fasting icon on fasting days. |
+| `fish_icon` | `mdi:fish` | Icon used on fish days (“Dezlegare la pește”). Any MDI icon, e.g. `mdi:fish-outline`. |
+| `fasting_icon` | `mdi:food-steak-off` | Icon used on other fasting days. Any MDI icon, e.g. `mdi:food-apple-outline`. |
 
 > Fasting icons are read from the event description, so the integration option
 > **“Include informații despre post”** must be enabled.
